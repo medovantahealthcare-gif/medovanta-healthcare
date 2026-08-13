@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Medovanta Healthcare — professional B2B distributor of medical, surgical, hospital and rehabilitation supplies.">
+<meta name="theme-color" content="#0b315b">
+<title>Medovanta Healthcare | B2B Medical & Surgical Supplies</title>
+<style>
+:root{--navy:#0b315b;--navy2:#123f70;--green:#198754;--green2:#11663f;--mint:#edf8f2;--bg:#f6f9fc;--white:#fff;--text:#17324d;--muted:#64748b;--line:#dce6ef;--shadow:0 18px 50px rgba(11,49,91,.10);--r:20px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+a{text-decoration:none;color:inherit}button,input,textarea,select{font:inherit}
+.container{width:min(1160px,92%);margin:auto}
+.topbar{background:var(--navy);color:#dceaf5;font-size:.82rem}
+.topbar .inner{min-height:36px;display:flex;align-items:center;justify-content:space-between;gap:15px}
+header{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;color:var(--navy)}
+.brand img{width:74px;height:56px;object-fit:contain}
+.brand span{font-size:1rem;letter-spacing:.4px}
+nav{display:flex;align-items:center;gap:20px}
+nav a{font-size:.9rem;font-weight:700;color:#38536b}
+nav a:hover{color:var(--green)}
+.btn{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:999px;padding:12px 18px;font-weight:800;cursor:pointer;transition:.2s}
+.btn-primary{background:var(--green);color:#fff;box-shadow:0 8px 20px rgba(25,135,84,.2)}
+.btn-primary:hover{background:var(--green2);transform:translateY(-2px)}
+.btn-dark{background:var(--navy);color:#fff}
+.btn-outline{border:1.5px solid var(--navy);color:var(--navy);background:#fff}
+.btn-outline:hover{background:var(--navy);color:#fff}
+.menu{display:none;background:none;border:0;font-size:1.8rem;color:var(--navy);cursor:pointer}
+.hero{padding:74px 0 64px;background:linear-gradient(135deg,#eef7ff,#fff 55%,#edf8f2);position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center}
+.eyebrow{display:inline-block;color:var(--green);font-size:.78rem;font-weight:900;letter-spacing:1.6px;text-transform:uppercase;margin-bottom:10px}
+h1{font-size:clamp(2.5rem,5vw,4.6rem);line-height:1.02;color:var(--navy);margin-bottom:18px}
+h1 span{color:var(--green)}
+.hero p{font-size:1.08rem;color:var(--muted);max-width:690px;margin-bottom:25px}
+.actions{display:flex;gap:11px;flex-wrap:wrap}
+.hero-panel{background:#fff;border:1px solid var(--line);border-radius:28px;padding:22px;box-shadow:var(--shadow)}
+.hero-panel img{width:100%;height:260px;object-fit:contain;border-radius:18px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+.stat{background:var(--mint);border-radius:15px;padding:13px;text-align:center}
+.stat b{display:block;color:var(--navy);font-size:1.15rem}.stat span{font-size:.78rem;color:var(--muted)}
+section{padding:76px 0}
+.section-head{max-width:760px;margin:0 auto 36px;text-align:center}
+.section-head h2{font-size:clamp(1.9rem,3vw,2.8rem);line-height:1.15;color:var(--navy);margin-bottom:10px}
+.section-head p{color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.info-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:25px;box-shadow:0 8px 30px rgba(15,40,70,.05);transition:.25s}
+.info-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.icon{width:48px;height:48px;display:grid;place-items:center;border-radius:14px;background:var(--mint);color:var(--green);font-size:1.3rem;margin-bottom:14px}
+.info-card h3{color:var(--navy);margin-bottom:6px}.info-card p{color:var(--muted);font-size:.93rem}
+.catalog{background:#fff}
+.catalog-tools{display:flex;gap:10px;justify-content:space-between;align-items:center;flex-wrap:wrap;margin-bottom:22px}
+.search{flex:1;min-width:230px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:12px 17px;outline:none}
+.search:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(25,135,84,.08)}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.filter{border:1px solid var(--line);background:#fff;color:var(--navy);padding:9px 13px;border-radius:999px;cursor:pointer;font-weight:750;font-size:.82rem}
+.filter.active,.filter:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.product{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 8px 28px rgba(15,40,70,.05);display:flex;flex-direction:column}
+.product-top{height:150px;background:linear-gradient(135deg,#f1f7fb,#edf8f2);display:grid;place-items:center;font-size:3.2rem;color:var(--green)}
+.product-body{padding:18px;display:flex;flex-direction:column;flex:1}
+.badge{font-size:.7rem;font-weight:900;color:var(--green);text-transform:uppercase;letter-spacing:1px}
+.product h3{color:var(--navy);margin:5px 0}
+.product p{color:var(--muted);font-size:.88rem;margin-bottom:14px}
+.product-actions{margin-top:auto;display:flex;gap:8px;flex-wrap:wrap}
+.product-actions .btn{padding:9px 13px;font-size:.8rem}
+.why{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:center}
+.dark-card{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;border-radius:28px;padding:36px;box-shadow:var(--shadow)}
+.dark-card h3{font-size:1.9rem;margin-bottom:10px}.dark-card p{color:#dbe9f4}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.check{background:#fff;border:1px solid var(--line);border-radius:16px;padding:17px;display:flex;gap:10px}.check b{color:var(--green)}.check strong{display:block;color:var(--navy)}.check span{font-size:.82rem;color:var(--muted)}
+.areas{background:#fff}
+.area-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.area{padding:20px 12px;border:1px solid var(--line);border-radius:17px;text-align:center;background:linear-gradient(180deg,#fff,#f7fbfd)}.area strong{display:block;color:var(--navy)}.area span{font-size:.78rem;color:var(--muted)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.form-card,.map-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:0 8px 30px rgba(15,40,70,.05)}
+.form-card h3,.map-card h3{color:var(--navy);margin-bottom:14px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}
+label{font-size:.8rem;font-weight:800;color:#3b536a}input,textarea,select{border:1px solid var(--line);border-radius:12px;padding:11px 12px;outline:none;background:#fbfdff}input:focus,textarea:focus,select:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(25,135,84,.08)}textarea{min-height:110px;resize:vertical}
+.map-wrap{height:360px;border-radius:16px;overflow:hidden;background:#eaf1f6}.map-wrap iframe{width:100%;height:100%;border:0}
+.map-note{font-size:.8rem;color:var(--muted);margin-top:10px}
+.profile{margin-top:28px;background:linear-gradient(135deg,#edf8f2,#eef7ff);border:1px solid var(--line);border-radius:22px;padding:25px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.profile h3{color:var(--navy)}.profile p{color:var(--muted);font-size:.9rem}
+footer{background:#071f3a;color:#cbd8e5;padding:28px 0}.footer{display:flex;justify-content:space-between;gap:20px;align-items:center}.footer strong{color:#fff}.small{font-size:.78rem;color:#91a5b9}
+.float-wa{position:fixed;right:20px;bottom:20px;width:58px;height:58px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;font-size:1.6rem;font-weight:900;box-shadow:0 12px 28px rgba(37,211,102,.35);z-index:1500}
+.toast{position:fixed;left:50%;bottom:25px;transform:translate(-50%,20px);opacity:0;background:#071f3a;color:#fff;padding:12px 17px;border-radius:999px;font-size:.84rem;transition:.25s;z-index:2000;pointer-events:none}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:900px){.hero-grid,.why,.contact-grid{grid-template-columns:1fr}.cards,.product-grid{grid-template-columns:1fr 1fr}.area-grid{grid-template-columns:repeat(3,1fr)}nav{display:none;position:absolute;left:0;right:0;top:78px;background:#fff;padding:20px;flex-direction:column;border-bottom:1px solid var(--line)}nav.open{display:flex}.menu{display:block}}
+@media(max-width:620px){.topbar .inner{justify-content:center;text-align:center}.topbar .inner span:last-child{display:none}.brand span{display:none}.hero{padding:55px 0}.cards,.product-grid,.checks{grid-template-columns:1fr}.area-grid{grid-template-columns:1fr 1fr}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.profile,.footer{flex-direction:column;text-align:center}.hero-panel img{height:210px}.float-wa{right:15px;bottom:15px}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="container inner">
+    <span>Professional B2B Medical • Surgical • Hospital Supply</span>
+    <span>Serving Singur • Serampore • Haripal • Nalikul • Sheoraphully</span>
+  </div>
+</div>
+
+<header>
+  <div class="container nav">
+    <a href="#home" class="brand">
+      <img src="assets/logo.png" alt="Medovanta Healthcare Logo">
+      <span>MEDOVANTA HEALTHCARE</span>
+    </a>
+
+    <button class="menu" aria-label="Open menu" onclick="toggleMenu()">☰</button>
+
+    <nav id="nav">
+      <a href="#about">About</a>
+      <a href="#catalog">Catalogue</a>
+      <a href="#areas">Coverage</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn-primary" href="#contact">Get a Quote</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow">B2B Healthcare Distribution</div>
+      <h1>Reliable healthcare supply for <span>better care.</span></h1>
+      <p>Medovanta Healthcare connects hospitals, clinics, nursing homes, medical stores and healthcare businesses with dependable medical, surgical, hospital and rehabilitation products.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#catalog">Explore Catalogue</a>
+        <a class="btn btn-outline" href="https://wa.me/919748566511?text=Hello%20Medovanta%20Healthcare,%20I%20want%20a%20B2B%20product%20quotation." target="_blank" rel="noopener">WhatsApp Enquiry</a>
+        <a class="btn btn-dark" href="Medovanta_Healthcare_Company_Profile.pdf" download>Download Profile</a>
+      </div>
+    </div>
+
+    <div class="hero-panel">
+      <img src="assets/logo.png" alt="Medovanta Healthcare">
+      <div class="stats">
+        <div class="stat"><b>B2B</b><span>Distribution</span></div>
+        <div class="stat"><b>6+</b><span>Product Areas</span></div>
+        <div class="stat"><b>5</b><span>Initial Markets</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">About Us</div>
+      <h2>A professional local healthcare supply partner</h2>
+      <p>Our model is built around reliable sourcing, practical B2B pricing, responsive communication and long-term relationships with healthcare buyers.</p>
+    </div>
+    <div class="cards">
+      <div class="info-card"><div class="icon">✓</div><h3>Quality Focus</h3><p>Source suitable genuine products from established manufacturers and suppliers and maintain proper documentation.</p></div>
+      <div class="info-card"><div class="icon">↗</div><h3>Reliable Supply</h3><p>Focus on repeat-order availability, clear quotations, order tracking and dependable local fulfilment.</p></div>
+      <div class="info-card"><div class="icon">₹</div><h3>B2B Value</h3><p>Build competitive pricing and repeat-customer terms around practical procurement requirements.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="catalog" class="catalog">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Product Catalogue</div>
+      <h2>Core products for your procurement needs</h2>
+      <p>Use the search and category filters to find products, then send a WhatsApp quotation request.</p>
+    </div>
+
+    <div class="catalog-tools">
+      <input id="search" class="search" type="search" placeholder="Search products, e.g. gloves, forceps, BP monitor..." oninput="renderProducts()">
+      <div class="filters">
+        <button class="filter active" data-cat="All" onclick="setCategory('All')">All</button>
+        <button class="filter" data-cat="Surgical" onclick="setCategory('Surgical')">Surgical</button>
+        <button class="filter" data-cat="PPE" onclick="setCategory('PPE')">PPE</button>
+        <button class="filter" data-cat="Wound Care" onclick="setCategory('Wound Care')">Wound Care</button>
+        <button class="filter" data-cat="Disposables" onclick="setCategory('Disposables')">Disposables</button>
+        <button class="filter" data-cat="Devices" onclick="setCategory('Devices')">Devices</button>
+        <button class="filter" data-cat="Orthopaedic" onclick="setCategory('Orthopaedic')">Orthopaedic</button>
+      </div>
+    </div>
+
+    <div id="productGrid" class="product-grid"></div>
+  </div>
+</section>
+
+<section>
+  <div class="container why">
+    <div class="dark-card">
+      <div class="eyebrow" style="color:#8de0b5">Why Medovanta</div>
+      <h3>Built for long-term B2B relationships.</h3>
+      <p>We want healthcare buyers to have one dependable local partner for frequently needed medical and surgical supplies.</p>
+    </div>
+    <div class="checks">
+      <div class="check"><b>✓</b><div><strong>Reliable sourcing</strong><span>Work with suitable manufacturers and suppliers.</span></div></div>
+      <div class="check"><b>✓</b><div><strong>Competitive pricing</strong><span>Practical B2B pricing for repeat customers.</span></div></div>
+      <div class="check"><b>✓</b><div><strong>Order support</strong><span>Fast quotation and communication through WhatsApp.</span></div></div>
+      <div class="check"><b>✓</b><div><strong>Local coverage</strong><span>Focused initial territory for efficient service.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="areas" class="areas">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Service Coverage</div>
+      <h2>Focused on your local B2B market</h2>
+      <p>Initial target territory for Medovanta Healthcare.</p>
+    </div>
+    <div class="area-grid">
+      <div class="area"><strong>Singur</strong><span>Primary market</span></div>
+      <div class="area"><strong>Serampore</strong><span>Growth market</span></div>
+      <div class="area"><strong>Haripal</strong><span>Local B2B</span></div>
+      <div class="area"><strong>Nalikul</strong><span>Local B2B</span></div>
+      <div class="area"><strong>Sheoraphully</strong><span>Growth market</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">B2B Enquiry</div>
+      <h2>Request a quotation</h2>
+      <p>Submit your requirement or send it directly through WhatsApp.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="form-card">
+        <h3>Send Your Requirement</h3>
+        <form onsubmit="sendEnquiry(event)">
+          <div class="form-grid">
+            <div class="field">
+              <label for="name">Your Name *</label>
+              <input id="name" required placeholder="Name">
+            </div>
+            <div class="field">
+              <label for="business">Business / Hospital *</label>
+              <input id="business" required placeholder="Business name">
+            </div>
+            <div class="field">
+              <label for="phone">Phone / WhatsApp *</label>
+              <input id="phone" required placeholder="+91">
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" type="email" placeholder="email@example.com">
+            </div>
+            <div class="field full">
+              <label for="category">Product Category</label>
+              <select id="category">
+                <option>Surgical Instruments</option>
+                <option>Gloves & PPE</option>
+                <option>Wound Care</option>
+                <option>Hospital Disposables</option>
+                <option>Basic Medical Devices</option>
+                <option>Orthopaedic & Rehab</option>
+              </select>
+            </div>
+            <div class="field full">
+              <label for="message">Requirement *</label>
+              <textarea id="message" required placeholder="Product name, quantity, preferred brand, delivery location, etc."></textarea>
+            </div>
+          </div>
+          <br>
+          <button class="btn btn-primary" type="submit">Send Enquiry on WhatsApp</button>
+        </form>
+      </div>
+
+      <div class="map-card">
+        <h3>Our Initial Market — Singur & Nearby Areas</h3>
+        <div class="map-wrap">
+          <iframe
+            loading="lazy"
+            src="https://www.google.com/maps?q=Singur,West+Bengal,India&output=embed"
+            title="Google Map showing Singur, West Bengal">
+          </iframe>
+        </div>
+        <p class="map-note">Replace this map with your exact office/warehouse location after finalising the business address.</p>
+        <br>
+        <a class="btn btn-outline" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Singur,West+Bengal,India">Open in Google Maps</a>
+      </div>
+    </div>
+
+    <div class="profile">
+      <div>
+        <h3>Download Medovanta Healthcare Company Profile</h3>
+        <p>Keep this PDF ready when approaching hospitals, clinics, dealers and institutional buyers.</p>
+      </div>
+      <a class="btn btn-dark" href="Medovanta_Healthcare_Company_Profile.pdf" download>Download Company Profile</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer">
+    <div>
+      <strong>MEDOVANTA HEALTHCARE</strong><br>
+      <span class="small">Medical • Surgical • Hospital Supplies</span>
+    </div>
+    <div class="small">© <span id="year"></span> Medovanta Healthcare. All rights reserved.</div>
+  </div>
+</footer>
+
+<!-- Mobile WhatsApp Button -->
+<a class="float-wa" href="https://wa.me/919748566511?text=Hello%20Medovanta%20Healthcare,%20I%20want%20a%20B2B%20quotation." target="_blank" rel="noopener" aria-label="WhatsApp Medovanta Healthcare">☏</a>
+
+<div id="toast" class="toast">Enquiry prepared.</div>
+
+<script>
+const WHATSAPP_NUMBER = "919748566511";
+
+const products = [
+  {name:"Artery Forceps",cat:"Surgical",icon:"✚",desc:"Common stainless-steel surgical instrument for professional healthcare use."},
+  {name:"Surgical Scissors",cat:"Surgical",icon:"✂",desc:"Scissors for dressing and surgical applications; variants available."},
+  {name:"Needle Holder",cat:"Surgical",icon:"⌁",desc:"Surgical needle holder options for clinical requirements."},
+  {name:"Nitrile Examination Gloves",cat:"PPE",icon:"🧤",desc:"Powder-free examination glove options in multiple sizes."},
+  {name:"Sterile Surgical Gloves",cat:"PPE",icon:"🧤",desc:"Sterile glove options for surgical and clinical requirements."},
+  {name:"3-Ply Medical Masks",cat:"PPE",icon:"▣",desc:"Disposable medical mask options for healthcare environments."},
+  {name:"Gauze Dressing Pads",cat:"Wound Care",icon:"＋",desc:"Gauze and dressing products for wound-care requirements."},
+  {name:"Crepe Bandage",cat:"Wound Care",icon:"＋",desc:"Elastic/crepe bandage options in different sizes."},
+  {name:"Surgical Adhesive Tape",cat:"Wound Care",icon:"▤",desc:"Medical tape options for dressing and clinical applications."},
+  {name:"Disposable Syringes",cat:"Disposables",icon:"▤",desc:"Disposable syringe options in commonly used sizes."},
+  {name:"IV Infusion Set",cat:"Disposables",icon:"⌁",desc:"IV set options for hospital and clinical procurement."},
+  {name:"Urine Collection Bag",cat:"Disposables",icon:"▤",desc:"Urinary drainage and collection products."},
+  {name:"Digital BP Monitor",cat:"Devices",icon:"♥",desc:"Blood pressure monitoring device options for clinics and home care."},
+  {name:"Pulse Oximeter",cat:"Devices",icon:"♥",desc:"Compact oxygen saturation and pulse monitoring options."},
+  {name:"Digital Thermometer",cat:"Devices",icon:"♥",desc:"Digital temperature measurement products."},
+  {name:"Knee Support",cat:"Orthopaedic",icon:"⌁",desc:"Knee support options for rehabilitation and everyday support."},
+  {name:"Cervical Collar",cat:"Orthopaedic",icon:"⌁",desc:"Cervical support options in suitable sizes."},
+  {name:"Folding Walker",cat:"Orthopaedic",icon:"⌁",desc:"Mobility and rehabilitation walker options."}
+];
+
+let activeCategory = "All";
+
+function setCategory(cat){
+  activeCategory = cat;
+  document.querySelectorAll(".filter").forEach(b => b.classList.toggle("active", b.dataset.cat === cat));
+  renderProducts();
+}
+
+function renderProducts(){
+  const q = document.getElementById("search").value.toLowerCase().trim();
+  const grid = document.getElementById("productGrid");
+
+  const filtered = products.filter(p =>
+    (activeCategory === "All" || p.cat === activeCategory) &&
+    (p.name.toLowerCase().includes(q) || p.cat.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q))
+  );
+
+  grid.innerHTML = filtered.length ? filtered.map(p => `
+    <article class="product">
+      <div class="product-top">${p.icon}</div>
+      <div class="product-body">
+        <div class="badge">${p.cat}</div>
+        <h3>${p.name}</h3>
+        <p>${p.desc}</p>
+        <div class="product-actions">
+          <button class="btn btn-primary" onclick="quoteProduct('${escapeQuotes(p.name)}')">WhatsApp Quote</button>
+          <a class="btn btn-outline" href="#contact" onclick="prefillProduct('${escapeQuotes(p.name)}')">Enquire</a>
+        </div>
+      </div>
+    </article>
+  `).join("") : `<div class="info-card" style="grid-column:1/-1;text-align:center"><h3>No product found</h3><p>Try another product or category.</p></div>`;
+}
+
+function escapeQuotes(s){
+  return s.replace(/'/g,"\\'").replace(/"/g,'&quot;');
+}
+
+function quoteProduct(product){
+  const msg = `Hello Medovanta Healthcare,%0A%0AI am interested in: ${encodeURIComponent(product)}.%0A%0APlease share availability, brand options, MOQ and B2B price.`;
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`,"_blank");
+}
+
+function prefillProduct(product){
+  document.getElementById("message").value = `I am interested in ${product}. Please share available brands, MOQ, price and delivery details.`;
+}
+
+function sendEnquiry(e){
+  e.preventDefault();
+
+  const name = document.getElementById("name").value.trim();
+  const business = document.getElementById("business").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const category = document.getElementById("category").value;
+  const message = document.getElementById("message").value.trim();
+
+  const text =
+`Hello Medovanta Healthcare,
+
+I want a B2B quotation.
+
+Name: ${name}
+Business/Hospital: ${business}
+Phone: ${phone}
+Email: ${email}
+Category: ${category}
+
+Requirement:
+${message}
+
+Please share availability, brands, MOQ, price and delivery details.`;
+
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`,"_blank");
+  showToast("Opening WhatsApp enquiry...");
+}
+
+function showToast(text){
+  const t = document.getElementById("toast");
+  t.textContent = text;
+  t.classList.add("show");
+  setTimeout(() => t.classList.remove("show"), 2500);
+}
+
+function toggleMenu(){
+  document.getElementById("nav").classList.toggle("open");
+}
+
+document.querySelectorAll("#nav a").forEach(a => {
+  a.addEventListener("click", () => document.getElementById("nav").classList.remove("open"));
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+renderProducts();
+</script>
+</body>
+</html>
